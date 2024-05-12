@@ -1,0 +1,64 @@
+import mongoose from "mongoose";
+
+const ProductSchema = new mongoose.Schema({
+    title: {
+        type: String,
+        required: [true, "Please provide a product name"],
+    },
+    img_url: {
+        type: String,
+        required: [true, "Please provide a product image"],
+    },
+    img_url1: {
+        type: String,
+    },
+    img_ur2: {
+        type: String,
+    },
+    img_url3: {
+        type: String,
+    },
+    img_url4: {
+        type: String,
+    },
+    img_url5: {
+        type: String,
+    },
+    price: {
+        type: Number,
+        required: [true, "Please provide a product price"],
+    },
+    category: {
+        type: String,
+        required: [true, "Please provide a product category"],
+    },
+    subtitle: {
+        type: String,
+        required: [true, "Please provide a product sub-title"],
+    },
+    description: {
+        type: String,
+        required: [true, "Please provide a product description"],
+    },
+    isStocked: {
+        type: Boolean,
+        required: [true, "If the product is in Stock or not"],
+    },
+    rating: {
+        type: Number,
+    },
+    reviews: {
+        type: Number,
+    },
+    head: {
+        type: String
+    },
+    bestseller: {
+        type: Boolean
+    }
+
+})
+
+const ProductDetails = mongoose.models.productDetails || mongoose.model("productDetails", ProductSchema);
+
+export default ProductDetails;
