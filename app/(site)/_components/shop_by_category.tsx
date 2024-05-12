@@ -36,10 +36,12 @@ const ShopByCategory = () => {
           </div>
           <div className="flex w-full gap-8 flex-wrap justify-center md:justify-normal">
             {data.map((link)=>(
-                <CategoryCard
+                <div key={link.text}>
+                    <CategoryCard
                     img_url={link.url}
                     txt={link.text}
                 />
+                </div>
             ))}
             </div>
         </div>

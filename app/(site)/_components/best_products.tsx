@@ -54,7 +54,8 @@ const BestProductsSection = () => {
                 </div>}
             {!loading && <div className="flex w-full gap-4 flex-wrap justify-center md:justify-normal ">
                 {bestSellers.map((link)=>(
-                    <ProductCards
+                    <div key={link.title}>
+                        <ProductCards
                     title={link.title}
                     description={link.subtitle}
                     img_url={link.img_url}
@@ -63,6 +64,7 @@ const BestProductsSection = () => {
                     rating={link.rating}
                     head={link.head}
                 />
+                    </div>
                 ))}
             </div>}
       </div>

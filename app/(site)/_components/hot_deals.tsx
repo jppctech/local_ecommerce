@@ -28,7 +28,9 @@ const HotDeals = () => {
 
             <div className="w-full flex flex-wrap justify-center md:justify-between gap-6">
                 {data.map((link)=>(
-                    <div className="lg:w-[433px] lg:h-[655px] md:w-[30%] pb-6 lg:pb-0 rounded-xl" style={{backgroundColor: link.color}}>
+                    <div className="lg:w-[433px] lg:h-[655px] md:w-[30%] pb-6 lg:pb-0 rounded-xl"
+                    key={link.title}
+                    style={{backgroundColor: link.color}}>
                     <img
                         src={link.img}
                         className="rounded-xl object-contain"
