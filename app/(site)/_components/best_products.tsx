@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import ProductCards from "./product_card";
 import axios from "axios";
 import ProductCardSkeleton from "./productsComponents/product_cardSkeleton";
+import { useRouter } from "next/navigation";
 
 interface productDetailProps{
     title: string,
@@ -13,12 +14,15 @@ interface productDetailProps{
     reviews: number,
     rating: number,
     head: string,
-    bestseller: Boolean
+    bestseller: Boolean,
+    _id: string
 }
 
 const BestProductsSection = () => {
 
     const [loading, setloading] = useState(true)
+
+    const route = useRouter()
 
     const [productDetail, setProductDetails] = useState<productDetailProps[]>([])
     const reqData = async()=> {
@@ -34,6 +38,10 @@ const BestProductsSection = () => {
     const bestSellers = productDetail.filter(function(best){
         return best.bestseller === true
     })
+
+    const Redirect=(id: string)=>{
+        route.push(`/product/${id}`);
+    }
     
     useEffect(()=> {
         reqData()
@@ -54,16 +62,16 @@ const BestProductsSection = () => {
                 </div>}
             {!loading && <div className="flex w-full gap-4 flex-wrap justify-center md:justify-normal ">
                 {bestSellers.map((link)=>(
-                    <div key={link.title}>
+                    <div key={link.title} onClick={()=>{Redirect(link._id)}}>
                         <ProductCards
-                    title={link.title}
-                    description={link.subtitle}
-                    img_url={link.img_url}
-                    price={link.price}
-                    reviews={link.reviews}
-                    rating={link.rating}
-                    head={link.head}
-                />
+                            title={link.title}
+                            description={link.subtitle}
+                            img_url={link.img_url}
+                            price={link.price}
+                            reviews={link.reviews}
+                            rating={link.rating}
+                            head={link.head}
+                        />
                     </div>
                 ))}
             </div>}
