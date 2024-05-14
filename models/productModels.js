@@ -59,7 +59,6 @@ const ProductSchema = new mongoose.Schema({
     allergens: {
         type: Array
     }
-
 })
 
 const ProductDetails = mongoose.models.productDetails || mongoose.model("productDetails", ProductSchema);

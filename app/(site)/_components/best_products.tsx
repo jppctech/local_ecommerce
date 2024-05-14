@@ -52,7 +52,7 @@ const BestProductsSection = () => {
         <div className="w-full flex flex-col gap-10 md:px-[4%] lg:px-[14%] mb-20 px-4 items-center md:items-start">
           <div className="w-full flex justify-between mt-24">
             <p className="text-3xl font-[450]">Best Sellers</p>
-            <button className="text-xl hover:underline underline-offset-4">View all products</button>
+            <button className="text-xl underline underline-offset-4">View all products</button>
           </div>
             {loading && <div className="flex w-full">
                 <ProductCardSkeleton/>

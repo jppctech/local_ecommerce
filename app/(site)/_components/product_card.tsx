@@ -78,7 +78,7 @@ const ProductCards = ({
             </div>
             <div className="h-full flex flex-col w-full p-4 gap-4">
                 <div className="flex flex-col gap-2">
-                    <p className="text-xl">${price}</p>
+                    <p className="text-xl">${price.toFixed(2)}</p>
                     <p className="text-2xl font-[500]">{title}</p>
                     <div className="flex gap-3">
                         <Rating rating={rating}/>

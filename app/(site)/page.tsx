@@ -3,6 +3,8 @@ import BestProductsSection from "./_components/best_products";
 import ShopFreshFood from "./_components/shop_fresh_food";
 import HotDeals from "./_components/hot_deals";
 import ShopByCategory from "./_components/shop_by_category";
+import Footer from "./_components/footer";
+import CopyRight from "./_components/copyright";
 
 export default function HomeDashboard() {
   return (
@@ -14,6 +16,8 @@ export default function HomeDashboard() {
       <ShopFreshFood/>
       <HotDeals/>
       <ShopByCategory/>
+      <Footer/>
+      <CopyRight/>
     </div>
   );
 }

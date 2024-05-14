@@ -5,10 +5,10 @@ export default function Rating({
 }:{
     rating: number
 }) {
-
+    const newrating = Math.round(rating)
     const FilledStar=()=>{
         const stars = [];
-        for (let step = 0; step < rating; step++) {
+        for (let step = 0; step < newrating; step++) {
             stars.push(<StarIcon key={step} className="w-4 h-4 fill-black" />);
         }
         return stars;
@@ -16,7 +16,7 @@ export default function Rating({
 
     const UnFilledStar=()=>{
         const stars = [];
-        for (let step = 0; step < 5-rating; step++) {
+        for (let step = 0; step < 5-newrating; step++) {
             stars.push(<StarIcon key={step} className="w-4 h-4 fill-muted stroke-muted-foreground" />);
         }
         return stars;

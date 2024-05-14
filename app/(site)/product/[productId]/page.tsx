@@ -165,13 +165,23 @@ const ProductPage = () => {
                     <p className="text-gray-500">There are 39 products left</p>
                     <p className="text-[56px]">${productDetail?.price.toFixed(2)}</p>
                     <Separator/>
-                    <div className="w-full flex py-2">
-                        <Button onClick={minus} disabled={quantity===1? true: false} variant={"outline"} className="border border-black rounded-full w-14 h-14 items-center justify-center flex hover:shadow-lg">
-                            <Minus size={24}/>
+                    <div className="w-full flex py-2 items-center">
+                        <div className="flex  gap-8">
+                            <div className="flex items-center">
+                            <Button onClick={minus} disabled={quantity===1? true: false} variant={"outline"} className="border border-black rounded-full w-14 h-14 items-center justify-center flex hover:shadow-lg">
+                                <Minus size={24}/>
+                            </Button>
+                            <div className="flex px-8 items-center text-2xl">{quantity}</div>
+                            <Button onClick={plus} disabled={quantity===10? true: false} variant={"outline"} className="border border-black rounded-full w-14 h-14 items-center justify-center flex hover:shadow-lg">
+                                <Plus size={24}/>
+                            </Button>
+                            </div>
+                        <Button className="w-56 p-8 rounded-full text-xl">
+                            Add to cart
                         </Button>
-                        <div className="flex px-8 items-center text-2xl">{quantity}</div>
-                        <Button onClick={plus} disabled={quantity===10? true: false} variant={"outline"} className="border border-black rounded-full w-14 h-14 items-center justify-center flex hover:shadow-lg">
-                            <Plus size={24}/>
+                        </div>
+                        <Button variant={"outline"} className="w-48 p-8 rounded-full md:ml-6 text-lg border-black hover:bg-black hover:text-white">
+                            Buy it now
                         </Button>
                     </div>
                 </div>
