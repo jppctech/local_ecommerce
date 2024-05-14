@@ -143,7 +143,7 @@ const ProductPage = () => {
                         </div>
                     </div>
                         {/* right side context div  */}
-                <div className="w-full px-16 gap-7 flex flex-col">
+                <div className="w-full md:px-16 gap-7 flex flex-col">
                     <p className="text-xl font-[500]">${productDetail?.price.toFixed(2)}</p>
                     <p className="text-3xl font-[500]">{productDetail?.title}</p>
                     <div className="flex gap-3 text-sm">
