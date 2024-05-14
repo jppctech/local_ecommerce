@@ -155,7 +155,7 @@ const ProductPage = () => {
                     <p className="text-xl font-[500] text-gray-800">Allergens</p>
                     <div className="flex gap-4 w-full">
                         {Allergens.map((link)=>(
-                            <div className={productDetail?.allergens.includes(link.label)? " flex items-center gap-2": "hidden"}>
+                            <div key={link.label} className={productDetail?.allergens.includes(link.label)? " flex items-center gap-2": "hidden"}>
                                 <img src={link.url}
                                     className="w-8"/>
                                 <p className="text-sm">{link.label}</p>
