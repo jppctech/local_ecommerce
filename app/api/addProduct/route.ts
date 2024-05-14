@@ -22,7 +22,8 @@ export async function POST(request: NextRequest){
         rating,
         reviews,
         head,
-        bestseller
+        bestseller,
+        allergens
        } = reqbody
 
       const newProduct = new ProductDetails({
@@ -41,7 +42,8 @@ export async function POST(request: NextRequest){
         rating,
         reviews,
         head,
-        bestseller
+        bestseller,
+        allergens
       })
 
     await newProduct.save();

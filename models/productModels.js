@@ -55,6 +55,9 @@ const ProductSchema = new mongoose.Schema({
     },
     bestseller: {
         type: Boolean
+    },
+    allergens: {
+        type: Array
     }
 
 })
