@@ -60,7 +60,7 @@ const BestProductsSection = () => {
                 <ProductCardSkeleton/>
                 <ProductCardSkeleton/>
                 </div>}
-            {!loading && <div className="flex w-full gap-4 flex-wrap justify-center md:justify-normal ">
+            {!loading && <div className="flex w-full gap-4 md:justify-normal overflow-x-scroll no-scrollbar">
                 {bestSellers.map((link)=>(
                     <div key={link.title} onClick={()=>{Redirect(link._id)}}>
                         <ProductCards

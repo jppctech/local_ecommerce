@@ -42,7 +42,7 @@ const ShopByCategory = () => {
             <p className="text-3xl font-[450]">Shop by Category</p>
             <button className="text-xl underline underline-offset-4">View all collection</button>
           </div>
-          <div className="flex w-full gap-8 flex-wrap justify-center md:justify-normal">
+          <div className="flex w-full gap-8 justify-center md:justify-normal overflow-x-scroll no-scrollbar">
             {data.map((link)=>(
                 <div key={link.text}>
                     <CategoryCard

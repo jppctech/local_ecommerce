@@ -8,6 +8,9 @@ import "../../../globals.css"
 import { Separator } from "@/components/ui/separator"
 import { Minus, Plus } from "lucide-react"
 import { Button } from "@/components/ui/button"
+import GoesWellWith from "../components/GoesWellWith"
+import Footer from "../../_components/footer"
+import OurServices from "../components/ourServices"
 
 
 interface ProductDetailProps{
@@ -21,11 +24,12 @@ interface ProductDetailProps{
     bestseller: Boolean,
     _id: string,
     description: string,
-    allergens: Array<any>
+    allergens: Array<any>,
+    category: string
 }
 
 const ProductPage = () => {
-    const [productDetail, setProductDetails] = useState<ProductDetailProps | null>()
+    const [productDetail, setProductDetails] = useState<ProductDetailProps | any>()
 
     const [quantity,setQuantity] = useState(1);
 
@@ -57,6 +61,7 @@ const ProductPage = () => {
     useEffect(()=> {
         reqData()
     }, [])
+
     
     
     
@@ -122,8 +127,8 @@ const ProductPage = () => {
             </div>
             <div className="md:flex w-full flex-row">
                         {/* left side image div  */}
-                    <div className="gap-3 flex flex-col ">
-                        <div className="border border-gray-300 lg:w-[600px] w-[450px] items-center justify-center flex lg:h-[600px] rounded-xl">
+                    <div className="gap-3 flex flex-col w-full">
+                        <div className="border border-gray-300 lg:max-w-[600px] w-[100%] items-center justify-center flex lg:max-h-[600px] rounded-xl">
                             <img
                                 src={productDetail?.img_url}
                                 className="w-[85%] object-cover rounded-full"
@@ -143,7 +148,8 @@ const ProductPage = () => {
                         </div>
                     </div>
                         {/* right side context div  */}
-                <div className="w-full md:px-16 gap-7 flex flex-col">
+                <div className="w-[100%] md:px-4 gap-6 flex flex-col">
+                {/* overflow-y-scroll no-scrollbar h-[750px] */}
                     <p className="text-xl font-[500]">${productDetail?.price.toFixed(2)}</p>
                     <p className="text-3xl font-[500]">{productDetail?.title}</p>
                     <div className="flex gap-3 text-sm">
@@ -166,26 +172,31 @@ const ProductPage = () => {
                     <p className="text-[56px]">${productDetail?.price.toFixed(2)}</p>
                     <Separator/>
                     <div className="w-full flex py-2 items-center">
-                        <div className="flex  gap-8">
+                        <div className="flex  gap-8 justify-between lg:justify-normal w-full px-6 lg:px-0">
                             <div className="flex items-center">
-                            <Button onClick={minus} disabled={quantity===1? true: false} variant={"outline"} className="border border-black rounded-full w-14 h-14 items-center justify-center flex hover:shadow-lg">
-                                <Minus size={24}/>
+                            <Button onClick={minus} disabled={quantity===1? true: false} variant={"outline"} className="border border-black rounded-full w-12 h-12 items-center justify-center flex hover:shadow-lg">
+                                <Minus size={20}/>
                             </Button>
                             <div className="flex px-8 items-center text-2xl">{quantity}</div>
-                            <Button onClick={plus} disabled={quantity===10? true: false} variant={"outline"} className="border border-black rounded-full w-14 h-14 items-center justify-center flex hover:shadow-lg">
-                                <Plus size={24}/>
+                            <Button onClick={plus} disabled={quantity===10? true: false} variant={"outline"} className="border border-black rounded-full w-12 h-12 items-center justify-center flex hover:shadow-lg">
+                                <Plus size={20}/>
                             </Button>
                             </div>
-                        <Button className="w-56 p-8 rounded-full text-xl">
+                        <Button className="lg:w-56 p-8 rounded-full text-xl">
                             Add to cart
                         </Button>
                         </div>
-                        <Button variant={"outline"} className="w-48 p-8 rounded-full md:ml-6 text-lg border-black hover:bg-black hover:text-white">
+                        <Button variant={"outline"} className="hidden lg:flex w-48 p-8 rounded-full md:ml-6 text-lg border-black hover:bg-black hover:text-white">
                             Buy it now
                         </Button>
                     </div>
+                    <Button variant={"outline"} className="lg:hidden flex w-full p-8 rounded-full md:ml-6 text-lg border-black hover:bg-black hover:text-white">
+                            Buy it now
+                    </Button>
+                    <GoesWellWith category={productDetail?.category}/>
                 </div>
             </div>
+            <OurServices/>
         </div>
      );
 }

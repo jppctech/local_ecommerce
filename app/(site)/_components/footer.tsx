@@ -2,9 +2,9 @@ import Link from "next/link";
 
 const Footer = () => {
     return ( 
-        <div className="px-2 md:px-[4%] lg:px-[14%] w-full flex pb-20 border-t border-t-gray-300 py-16">
+        <div className="px-2 md:px-[4%] lg:px-[14%] w-full md:flex-row flex flex-col pb-20 border-t border-t-gray-300 py-16 justify-center gap-10 md:gap-0">
 
-            <div className="flex flex-col gap-4 w-[25%]">
+            <div className="flex flex-col gap-4 md:w-[25%] w-full">
                     <p className="text-3xl font-[500]">LOCAL</p>
                     <p className="flex-wrap max-w-[75%]">Fresh products from local producers, delivered directly to your front door, daily.</p>
                 <div className="flex gap-2">
@@ -33,7 +33,7 @@ const Footer = () => {
                 </div>
             </div>
 
-            <div className="flex-col flex gap-4  w-[25%]">
+            <div className="flex-col flex gap-4  md:w-[25%] w-full">
                 <p className="text-xl font-[500]">Popular categories</p>
                 <div className="flex flex-col gap-2">
                     <Link href={"#"}><p className=" underline underline-offset-4 hover:text-green-700">Bread & Bakery</p></Link>
@@ -44,7 +44,7 @@ const Footer = () => {
                 </div>
             </div>
 
-            <div className="flex flex-col gap-4 w-[25%]">
+            <div className="flex flex-col gap-4 md:w-[25%] w-full">
                 <p className="text-xl font-[500]">Main Store</p>
                 <div className="flex flex-col gap-2">
                     <p>
@@ -59,7 +59,7 @@ const Footer = () => {
                 </div>
             </div>
 
-            <div className="flex-col flex gap-4  ">
+            <div className="flex-col flex gap-4">
                 <p className="text-xl font-[500]">Quick links</p>
                 <div className="flex flex-col gap-2">
                     <Link href={"#"}><p className=" underline underline-offset-4 hover:text-green-700">Search</p></Link>

@@ -62,7 +62,7 @@ const ProductCards = ({
 
     const reviewNum= `(${reviews})`
     return ( 
-        <div className=" pb-3 lg:w-80 md:w-64 w-48 border border-gray-200 rounded-xl flex flex-col p-2 hover:cursor-pointer">
+        <div className=" pb-3 lg:w-80 md:w-64 w-64 border border-gray-200 rounded-xl flex flex-col p-2 hover:cursor-pointer">
             <div className="md:h-72 h-32 relative w-full items-center justify-center flex flex-col">
                 <div className={
                         head==="NEW"? "absolute top-0 right-0  bg-green-700 w-12 items-center flex justify-center rounded-md text-white text-[13px] h-6 mt-4 mr-4"
@@ -79,7 +79,7 @@ const ProductCards = ({
             <div className="h-full flex flex-col w-full p-4 gap-4">
                 <div className="flex flex-col gap-2">
                     <p className="text-xl">${price.toFixed(2)}</p>
-                    <p className="text-2xl font-[500]">{title}</p>
+                    <p className="text-2xl font-[500] line-clamp-1">{title}</p>
                     <div className="flex gap-3">
                         <Rating rating={rating}/>
                         <p className="text-sm">{reviewNum==="(undefined)"? `(0)`: reviewNum}</p>

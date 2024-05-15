@@ -1,3 +1,5 @@
+import CopyRight from "./_components/copyright";
+import Footer from "./_components/footer";
 import Header from "./_components/header";
 
 const SiteLayout = ({
@@ -9,6 +11,8 @@ const SiteLayout = ({
         <div>
             <Header/>
             {children}
+            <Footer/>
+            <CopyRight/>
         </div>
      );
 }

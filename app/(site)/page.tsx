@@ -16,8 +16,6 @@ export default function HomeDashboard() {
       <ShopFreshFood/>
       <HotDeals/>
       <ShopByCategory/>
-      <Footer/>
-      <CopyRight/>
     </div>
   );
 }
