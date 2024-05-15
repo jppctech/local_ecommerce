@@ -25,7 +25,7 @@ const OurServices = () => {
     return ( 
         <div className="w-full flex py-12 gap-8 overflow-y-scroll no-scrollbar justify-evenly">
             {data.map((link)=>(
-                <div className="flex flex-col gap-4 items-center justify-end">
+                <div key={link.label} className="flex flex-col gap-4 items-center justify-end">
                     <img
                         src={link.url}
                         className="w-40"
