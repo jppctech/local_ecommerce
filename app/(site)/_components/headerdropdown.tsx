@@ -56,7 +56,7 @@ const components: { title: string; href: string; description: string }[] = [
 export function NavigationMenuDemo() {
   return (
     <NavigationMenu>
-      <NavigationMenuList className="font-[500]">
+      <NavigationMenuList className="font-[500] -space-x-2 md:-space-x-0">
         <NavigationMenuItem>
           <NavigationMenuTrigger>Categories</NavigationMenuTrigger>
           <NavigationMenuContent>
@@ -87,13 +87,13 @@ export function NavigationMenuDemo() {
             </NavigationMenuLink>
           </Link>
         </NavigationMenuItem>
-        <NavigationMenuItem>
+        {/* <NavigationMenuItem>
           <Link href="/" legacyBehavior passHref>
             <NavigationMenuLink className={navigationMenuTriggerStyle()}>
               Blogs
             </NavigationMenuLink>
           </Link>
-        </NavigationMenuItem>
+        </NavigationMenuItem> */}
         <NavigationMenuItem>
           <Link href="/" legacyBehavior passHref>
             <NavigationMenuLink className={navigationMenuTriggerStyle()}>

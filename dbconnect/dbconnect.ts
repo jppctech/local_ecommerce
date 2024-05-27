@@ -19,4 +19,4 @@ export async function connect(){
         console.log("Something went wrong in connecting to DB");
         console.log(error);
     }
-}
+} 

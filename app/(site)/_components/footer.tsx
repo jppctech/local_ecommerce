@@ -2,7 +2,7 @@ import Link from "next/link";
 
 const Footer = () => {
     return ( 
-        <div className="px-2 md:px-[4%] lg:px-[14%] w-full md:flex-row flex flex-col pb-20 border-t border-t-gray-300 py-16 justify-center gap-10 md:gap-0">
+        <div className="px-2 md:px-[4%] lg:px-[14%] w-full md:flex-row flex flex-col pb-20 border-t border-t-gray-300 py-16 justify-center md:justify-normal gap-10 md:gap-0">
 
             <div className="flex flex-col gap-4 md:w-[25%] w-full">
                     <p className="text-3xl font-[500]">LOCAL</p>

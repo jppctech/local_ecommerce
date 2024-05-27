@@ -33,11 +33,11 @@ export function CarouselHome() {
                 width={1920}
               />
               <div className="absolute inset-0 " />
-              <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 flex flex-col items-center justify-center p-6 md:p-8 lg:p-12">
-                <h3 className="text-sm md:text-3xl lg:text-4xl font-bold text-black mb-2">Acme Wireless Headphones</h3>
+              <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 flex flex-col items-center justify-center p-6 md:p-8 lg:p-12 gap-4">
                 <p className="text-sm md:text-lg lg:text-xl text-black mb-6">
-                  Experience high-quality sound with our latest wireless headphones.
+                  Introducing
                 </p>
+                <h3 className="text-sm md:text-4xl lg:text-6xl font-[500] text-black mb-2">Prepared Meals</h3>
                 <div className="flex gap-3">
                   <Button className="bg-black text-white md:w-52 md:h-16 rounded-full text-md md:text-xl font-[600]">
                     SHOP NOW
@@ -61,11 +61,11 @@ export function CarouselHome() {
                 width={1920}
               />
               <div className="absolute inset-0 " />
-              <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 flex flex-col items-center justify-center p-6 md:p-8 lg:p-12">
-                <h3 className="text-sm md:text-3xl lg:text-4xl font-bold text-black mb-2">Acme Wireless Headphones</h3>
-                <p className="text-sm md:text-lg lg:text-xl text-black mb-6">
-                  Experience high-quality sound with our latest wireless headphones.
+              <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 flex flex-col items-center justify-center p-6 md:p-8 lg:p-12 gap-4">
+              <p className="text-sm md:text-lg lg:text-xl text-black mb-6">
+                  Only Non-GMO
                 </p>
+                <h3 className="text-sm md:text-4xl lg:text-6xl font-[500] text-black mb-2">100% Organic</h3>
                 <div className="flex gap-3">
                   <Button className="bg-black text-white md:w-52 md:h-16 rounded-full text-md md:text-xl font-[600]">
                     SHOP NOW

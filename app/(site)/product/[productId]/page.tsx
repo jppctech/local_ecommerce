@@ -9,7 +9,6 @@ import { Separator } from "@/components/ui/separator"
 import { Minus, Plus } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import GoesWellWith from "../components/GoesWellWith"
-import Footer from "../../_components/footer"
 import OurServices from "../components/ourServices"
 
 

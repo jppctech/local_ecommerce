@@ -5,10 +5,12 @@ import HotDeals from "./_components/hot_deals";
 import ShopByCategory from "./_components/shop_by_category";
 import Footer from "./_components/footer";
 import CopyRight from "./_components/copyright";
+import Header from "./_components/header";
 
 export default function HomeDashboard() {
   return (
     <div className="flex flex-col w-full">
+      <Header/>
       <div className="">
         <CarouselHome/> 
       </div>
@@ -16,6 +18,8 @@ export default function HomeDashboard() {
       <ShopFreshFood/>
       <HotDeals/>
       <ShopByCategory/>
+      <Footer/>
+      <CopyRight/>
     </div>
   );
 }
