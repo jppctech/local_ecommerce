@@ -33,7 +33,7 @@ const Header: React.FC = () => {
                     height={1000}
                     width={1000}
                     src="https://local-theme-light-demo.myshopify.com/cdn/shop/files/LOGO_new.png?v=1655818343"
-                    className="object-cover md:h-16 h-8"
+                    className="object-cover md:h-16 h-8 w-32"
                 />
                 <div className="flex w-full items-center justify-end gap-4">
                     <div className="md:w-[65%] w-full flex bg-white md:h-12 h-10 rounded-full items-center px-3 gap-2 hover:border-black border border-gray-200 relative">
