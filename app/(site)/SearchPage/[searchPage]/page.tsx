@@ -45,7 +45,9 @@ function SearchPage() {
       <div>
         <p>Home / Search results for {`"${searchString}"`}</p>
         {searchResults.map((items)=> (
-          <div>{items.title}</div>
+          <div key={items._id}>
+            {items.title}
+          </div>
         ))}
       </div>
     </div>
