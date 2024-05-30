@@ -25,6 +25,7 @@ export async function POST(request: NextRequest) {
                 { title: { $regex: searchRegex } },
                 { description: { $regex: searchRegex } },
                 { category: { $regex: searchRegex } },
+                { subtitle: { $regex: searchRegex } }
             ]
         });
 
