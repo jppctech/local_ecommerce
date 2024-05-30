@@ -1,5 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
+import Image from "next/image";
 
 const GoesWellWithCard = ({
     title,
@@ -15,7 +16,11 @@ const GoesWellWithCard = ({
             <div className="flex items-center justify-between">
                 <div className="flex items-center justify-center gap-4">
                     <div className="border border-gray-300 w-24 rounded-lg h-26 items-center justify-center flex">
-                        <img src={img_url} 
+                        <Image 
+                            alt="suggestion products"
+                            width={500}
+                            height={500}
+                            src={img_url} 
                             className="w-24 rounded-full"
                         />
                     </div>

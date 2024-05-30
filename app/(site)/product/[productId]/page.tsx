@@ -10,6 +10,7 @@ import { Minus, Plus } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import GoesWellWith from "../components/GoesWellWith"
 import OurServices from "../components/ourServices"
+import Image from "next/image"
 
 
 interface ProductDetailProps{
@@ -128,19 +129,26 @@ const ProductPage = () => {
                         {/* left side image div  */}
                     <div className="gap-3 flex flex-col w-full">
                         <div className="border border-gray-300 lg:max-w-[600px] w-[100%] items-center justify-center flex lg:max-h-[600px] rounded-xl">
-                            <img
+                            <Image
+                                alt="product image"
+                                width={1000}
+                                height={1000}
                                 src={productDetail?.img_url}
                                 className="w-[85%] object-cover rounded-full"
                             />
                         </div>
                         <div className="flex gap-3">
                             <div className="h-28 w-28 border border-gray-300 rounded-xl items-center justify-center flex">
-                                <img src={productDetail?.img_url}
+                                <Image
+                                alt="product image 2"
+                                src={productDetail?.img_url}
                                 className="rounded-full w-24"
                                 />
                             </div>
                             <div className="h-28 w-28 border border-gray-300 rounded-xl items-center justify-center flex">
-                                <img src={productDetail?.img_url}
+                                <Image
+                                alt="product image 3"
+                                src={productDetail?.img_url}
                                 className="rounded-full w-24"
                                 />
                             </div>
@@ -161,7 +169,9 @@ const ProductPage = () => {
                     <div className="flex gap-4 w-full">
                         {Allergens.map((link)=>(
                             <div key={link.label} className={productDetail?.allergens.includes(link.label)? " flex items-center gap-2": "hidden"}>
-                                <img src={link.url}
+                                <Image
+                                    alt="allergens"
+                                    src={link.url}
                                     className="w-8"/>
                                 <p className="text-sm">{link.label}</p>
                             </div>
