@@ -19,16 +19,17 @@ const GoesWellWith = ({
     
     const [productDetail, setProductDetails] = useState<productDetailProps[]>([])
 
-    const reqData = async()=> {
-        try {
-            const res = await axios.post("/api/getProductDetails", category);
-            setProductDetails(res.data.data)   
-        } catch (error) {
-            console.log(error)
-        }
-    }
 
     useEffect(()=> {
+        const reqData = async()=> {
+            try {
+                const res = await axios.post("/api/getProductDetails", category);
+                setProductDetails(res.data.data)   
+            } catch (error) {
+                console.log(error)
+            }
+        }
+        
         reqData()
     }, [category])
 

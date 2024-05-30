@@ -46,19 +46,22 @@ const ProductPage = () => {
     }
 
     const id = useParams()    
-    const reqData = async()=> {
-
-        try {
-            const res = await axios.post("/api/getProducts", id);
-            setProductDetails(res.data.data)    
-        } catch (error) {
-            console.log(error)
-        }
-    }
+    
     
     const Review = (`(${productDetail?.reviews})`)
     
     useEffect(()=> {
+
+        const reqData = async()=> {
+
+            try {
+                const res = await axios.post("/api/getProducts", id);
+                setProductDetails(res.data.data)    
+            } catch (error) {
+                console.log(error)
+            }
+        }
+        
         reqData()
     }, [id])
 
