@@ -60,7 +60,7 @@ const ProductPage = () => {
     
     useEffect(()=> {
         reqData()
-    }, [])
+    }, [id])
 
     
     

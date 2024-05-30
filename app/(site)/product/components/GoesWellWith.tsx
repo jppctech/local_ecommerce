@@ -30,7 +30,7 @@ const GoesWellWith = ({
 
     useEffect(()=> {
         reqData()
-    }, [])
+    }, [category])
 
     return ( 
         <div className="flex flex-col w-full py-10 gap-6">
