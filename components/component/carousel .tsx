@@ -3,6 +3,7 @@
 import { Button } from "@/components/ui/button"
 import { CarouselItem, CarouselContent, Carousel } from "@/components/ui/carousel"
 import Autoplay from "embla-carousel-autoplay"
+import Image from "next/image"
 
 export function CarouselHome() {
   return (
@@ -21,8 +22,8 @@ export function CarouselHome() {
         <CarouselContent>
           <CarouselItem>
             <div className="relative w-full aspect-[24/9] overflow-hidden">
-              <img
-                alt="Product 1"
+              <Image
+                alt="product image"
                 className="object-cover w-full h-full"
                 height={1080}
                 src="https://local-theme-light-demo.myshopify.com/cdn/shop/files/HERO_main_2_6e4d8f5b-69d4-41fa-9abd-234c6dfa6756.jpg?v=1655970512&width=1860"
@@ -49,7 +50,7 @@ export function CarouselHome() {
 
           <CarouselItem>
             <div className="relative w-full aspect-[24/9] overflow-hidden">
-              <img
+              <Image
                 alt="Product 1"
                 className="object-cover w-full h-full"
                 height={1080}

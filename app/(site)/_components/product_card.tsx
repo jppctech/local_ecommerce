@@ -1,5 +1,6 @@
 import { Button } from "@/components/ui/button";
 import Rating from "./rating_star";
+import Image from "next/image";
 
 const ProductCards = ({
     price,
@@ -71,8 +72,11 @@ const ProductCards = ({
                 }>
                     {head}
                 </div>
-                <img
+                <Image
+                    width={500}
                     src={img_url}
+                    alt="product image"
+                    height={500}
                     className=" object-contain rounded-full md:w-72 md:h-72 w-32 h-32 md:hover:w-80 md:hover:h-80 hover:w-40 hover:h-40 animate-out"
                 />
             </div>

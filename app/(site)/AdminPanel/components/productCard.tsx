@@ -3,6 +3,7 @@
 import { Button } from "@/components/ui/button";
 import axios from "axios";
 import { SquarePen, Trash } from "lucide-react";
+import Image from "next/image";
 
 const AdminProductCard = ({
     img_url,
@@ -28,9 +29,12 @@ const AdminProductCard = ({
 
     return ( 
         <div className="flex items-center lg:w-[800px] px-4 rounded-xl border border-gray-300 shadow-lg justify-evenly">
-            <img
+            <Image
                 src={img_url}
                 className="w-20"
+                alt="product image"
+                height={1000}
+                width={1000}
             />
             <p className="w-64">{title}</p>
             <p>$ {price}</p>

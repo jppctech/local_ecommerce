@@ -1,4 +1,5 @@
 import { Button } from "@/components/ui/button";
+import Image from "next/image";
 
 const HotDeals = () => {
 
@@ -31,7 +32,10 @@ const HotDeals = () => {
                     <div className="lg:w-[433px] lg:h-[655px] md:w-[30%] pb-6 lg:pb-0 rounded-xl"
                     key={link.title}
                     style={{backgroundColor: link.color}}>
-                    <img
+                    <Image
+                        alt="Hot deals"
+                        width={1000}
+                        height={1000}
                         src={link.img}
                         className="rounded-xl object-contain"
                     />

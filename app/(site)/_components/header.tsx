@@ -5,6 +5,7 @@ import { NavigationMenuDemo } from "./headerdropdown";
 import { useState, ChangeEvent } from "react";
 import React, { KeyboardEvent } from 'react';
 import { useRouter } from "next/navigation";
+import Image from "next/image";
 
 const Header: React.FC = () => {
     const [suggest, setSuggest] = useState<string>('');
@@ -27,7 +28,10 @@ const Header: React.FC = () => {
     return (
         <div className="flex flex-col w-full" onClick={()=> setShowSuggestion(false)}>
             <div className="md:flex-row flex-col flex w-full h-32 md:justify-between justify-center items-center gap-4 border border-b-gray-200 px-2 md:px-[4%] lg:px-[14%]">
-                <img
+                <Image
+                    alt="local logo"
+                    height={1000}
+                    width={1000}
                     src="https://local-theme-light-demo.myshopify.com/cdn/shop/files/LOGO_new.png?v=1655818343"
                     className="object-cover md:h-16 h-8"
                 />

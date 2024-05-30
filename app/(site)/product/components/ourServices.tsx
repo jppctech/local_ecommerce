@@ -1,3 +1,5 @@
+import Image from "next/image";
+
 const OurServices = () => {
 
     const data=[
@@ -26,7 +28,10 @@ const OurServices = () => {
         <div className="w-full flex py-12 gap-8 overflow-y-scroll no-scrollbar justify-evenly">
             {data.map((link)=>(
                 <div key={link.label} className="flex flex-col gap-4 items-center justify-end">
-                    <img
+                    <Image
+                        alt="product image"
+                        width={1000}
+                        height={1000}
                         src={link.url}
                         className="w-40"
                     />

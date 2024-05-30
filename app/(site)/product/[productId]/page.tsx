@@ -140,14 +140,18 @@ const ProductPage = () => {
                         <div className="flex gap-3">
                             <div className="h-28 w-28 border border-gray-300 rounded-xl items-center justify-center flex">
                                 <Image
-                                alt="product image 2"
+                                alt="product image"
+                                width={1000}
+                                height={1000}
                                 src={productDetail?.img_url}
                                 className="rounded-full w-24"
                                 />
                             </div>
                             <div className="h-28 w-28 border border-gray-300 rounded-xl items-center justify-center flex">
                                 <Image
-                                alt="product image 3"
+                                alt="product image"
+                                width={1000}
+                                height={1000}
                                 src={productDetail?.img_url}
                                 className="rounded-full w-24"
                                 />
@@ -170,7 +174,9 @@ const ProductPage = () => {
                         {Allergens.map((link)=>(
                             <div key={link.label} className={productDetail?.allergens.includes(link.label)? " flex items-center gap-2": "hidden"}>
                                 <Image
-                                    alt="allergens"
+                                    alt="product image"
+                                    width={1000}
+                                    height={1000}
                                     src={link.url}
                                     className="w-8"/>
                                 <p className="text-sm">{link.label}</p>
