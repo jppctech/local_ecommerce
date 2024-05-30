@@ -8,25 +8,23 @@ import { useRouter } from "next/navigation";
 import Image from "next/image";
 
 const Header: React.FC = () => {
-    const [suggest, setSuggest] = useState<string>('');
-    const [showSuggestion,setShowSuggestion] = useState(false)
+    const [search, setSearch] = useState<string>('');
 
     const router = useRouter()
 
     const handleInputChange = (event: ChangeEvent<HTMLInputElement>) => {
         event.preventDefault
-        setSuggest(event.target.value);
-        setShowSuggestion(true)
+        setSearch(event.target.value);
     };
 
     const startSearch = (event: KeyboardEvent<HTMLInputElement>)=>{
         if (event.key === 'Enter') {
-            router.push(`/SearchPage/${suggest}`)
+            router.push(`/SearchPage/${search}`)
         }
     }
 
     return (
-        <div className="flex flex-col w-full" onClick={()=> setShowSuggestion(false)}>
+        <div className="flex flex-col w-full">
             <div className="md:flex-row flex-col flex w-full h-32 md:justify-between justify-center items-center gap-4 border border-b-gray-200 px-2 md:px-[4%] lg:px-[14%]">
                 <Image
                     alt="local logo"
@@ -41,16 +39,11 @@ const Header: React.FC = () => {
                         <input
                             className="w-full h-full outline-none rounded-full"
                             name="search"
-                            value={suggest}
+                            value={search}
                             placeholder="Search for..."
                             onChange={handleInputChange}
                             onKeyDown={startSearch}
                         />
-                        {/* {
-                            showSuggestion && (
-                                <SearchSuggestion/>
-                            )
-                        } */}
                     </div>
                     <button className="hidden md:flex gap-2 border border-gray-600 rounded-full h-12 w-36 items-center justify-center hover:bg-black hover:text-white">
                         <User />

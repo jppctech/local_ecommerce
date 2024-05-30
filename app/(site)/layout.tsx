@@ -1,3 +1,6 @@
+import Footer from "./_components/footer";
+import Header from "./_components/header";
+
 const SiteLayout = ({
     children
 }:{
@@ -5,7 +8,6 @@ const SiteLayout = ({
 }) => {
     return ( 
         <div>
-            {/* <Header/> */}
             {children}
         </div>
      );
