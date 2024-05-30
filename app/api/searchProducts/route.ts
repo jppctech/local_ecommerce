@@ -4,9 +4,22 @@ import { NextRequest, NextResponse } from "next/server";
 
 connect();
 
-export async function POST(request: NextRequest) {
+// Define the interface for the request body
+interface SearchRequestBody {
+    searchString: string;
+}
+
+// Define the interface for the product data
+interface Product {
+    title: string;
+    description: string;
+    category: string;
+    subtitle: string;
+}
+
+export async function POST(request: NextRequest): Promise<NextResponse> {
     try {
-        const reqBody = await request.json();
+        const reqBody: SearchRequestBody = await request.json();
         const { searchString } = reqBody;
 
         // Ensure searchString is provided
@@ -18,16 +31,24 @@ export async function POST(request: NextRequest) {
             });
         }
 
-        // Create a MongoDB query to search across multiple fields
-        const searchRegex = new RegExp(searchString, 'i'); // 'i' makes it case-insensitive
-        const products = await ProductDetails.find({
-            $or: [
-                { title: { $regex: searchRegex } },
-                { description: { $regex: searchRegex } },
-                { category: { $regex: searchRegex } },
-                { subtitle: { $regex: searchRegex } }
-            ]
+        // Split search string into individual keywords
+        const keywords: string[] = searchString.split(' ');
+
+        // Create a MongoDB query to search across multiple fields for any keyword
+        const searchConditions = keywords.map(keyword => {
+            const searchRegex = new RegExp(keyword, 'i'); // 'i' makes it case-insensitive
+            return {
+                $or: [
+                    { title: { $regex: searchRegex } },
+                    { description: { $regex: searchRegex } },
+                    { category: { $regex: searchRegex } },
+                    { subtitle: { $regex: searchRegex } }
+                ]
+            };
         });
+
+        // Use $or at the top level to match any product that satisfies any of the conditions
+        const products: Product[] = await ProductDetails.find({ $or: searchConditions });
 
         return NextResponse.json({
             data: products
