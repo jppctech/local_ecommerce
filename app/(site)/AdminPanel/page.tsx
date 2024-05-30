@@ -53,13 +53,15 @@ const AdminPanel = () => {
             {/* Body  */}
             <div className="w-full px-[14%] py-4 gap-4 flex flex-col">
                 {productDetail.map((link)=>(
-                    <AdminProductCard
-                    img_url={link.img_url}
-                    title={link.title}
-                    price={link.price}
-                    productId={link._id}
-                    onDelete={handleDelete}
-                />
+                    <div key={link._id}>
+                        <AdminProductCard
+                            img_url={link.img_url}
+                            title={link.title}
+                            price={link.price}
+                            productId={link._id}
+                            onDelete={handleDelete}
+                        />
+                    </div>
                 ))}
                 {/* <ProductTable/> */}
             </div>

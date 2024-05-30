@@ -3,17 +3,26 @@
 import { Search, ShoppingCart, User } from "lucide-react";
 import { NavigationMenuDemo } from "./headerdropdown";
 import { useState, ChangeEvent } from "react";
-import SearchSuggestion from "./productsComponents/SearchSuggestion";
+import React, { KeyboardEvent } from 'react';
+import { useRouter } from "next/navigation";
 
 const Header: React.FC = () => {
     const [suggest, setSuggest] = useState<string>('');
     const [showSuggestion,setShowSuggestion] = useState(false)
+
+    const router = useRouter()
 
     const handleInputChange = (event: ChangeEvent<HTMLInputElement>) => {
         event.preventDefault
         setSuggest(event.target.value);
         setShowSuggestion(true)
     };
+
+    const startSearch = (event: KeyboardEvent<HTMLInputElement>)=>{
+        if (event.key === 'Enter') {
+            router.push(`/SearchPage/${suggest}`)
+        }
+    }
 
     return (
         <div className="flex flex-col w-full" onClick={()=> setShowSuggestion(false)}>
@@ -31,12 +40,13 @@ const Header: React.FC = () => {
                             value={suggest}
                             placeholder="Search for..."
                             onChange={handleInputChange}
+                            onKeyDown={startSearch}
                         />
-                        {
+                        {/* {
                             showSuggestion && (
                                 <SearchSuggestion/>
                             )
-                        }
+                        } */}
                     </div>
                     <button className="hidden md:flex gap-2 border border-gray-600 rounded-full h-12 w-36 items-center justify-center hover:bg-black hover:text-white">
                         <User />
