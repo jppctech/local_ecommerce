@@ -62,6 +62,9 @@ const ProductSchema = new mongoose.Schema({
     },
     allergens: {
         type: Array
+    },
+    tags: {
+        type: Array
     }
 })
 

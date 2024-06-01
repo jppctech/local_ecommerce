@@ -40,7 +40,7 @@ export async function POST(request: NextRequest): Promise<NextResponse> {
             return {
                 $or: [
                     { title: { $regex: searchRegex } },
-                    { description: { $regex: searchRegex } },
+                    { tags: { $regex: searchRegex } },
                     { category: { $regex: searchRegex } },
                     { subtitle: { $regex: searchRegex } }
                 ]
