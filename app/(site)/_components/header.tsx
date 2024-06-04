@@ -37,7 +37,7 @@ const Header: React.FC = () => {
                     <div className="md:w-[65%] w-full flex bg-white md:h-12 h-10 rounded-full items-center px-3 gap-2 hover:border-black border border-gray-200 relative">
                         <Search />
                         <input
-                            className="w-full h-full outline-none rounded-full"
+                            className="w-full h-full outline-none rounded-full bg-transparent"
                             name="search"
                             value={search}
                             placeholder="Search for..."

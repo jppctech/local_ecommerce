@@ -3,6 +3,8 @@
 import axios from "axios";
 import { useParams } from "next/navigation";
 import { useEffect, useState } from "react";
+import ProductCards from "../../_components/product_card";
+import SearchCard from "../components/SearchCard";
 
 interface SearchPageProps{
   title: string,
@@ -42,12 +44,39 @@ function SearchPage() {
 
   return (
     <div className="px-2 md:px-[4%] lg:px-[14%]">
-      <div>
-        <p>Home / Search results for {`"${searchString}"`}</p>
-        {searchResults.map((items)=> (
-          <div key={items._id}>
-            {items.title}
-          </div>
+      <div className="flex flex-col gap-4">
+        {/* address  */}
+        <div>
+          <p className="text-sm">Home / Search results for {`"${searchString}"`}</p>
+        </div>
+        {/* second word  */}
+        <div>
+          <p className="text-3xl font-[600]">Search results</p>
+        </div>
+        {/* search bar  */}
+        {/* <div>
+          searchBar
+        </div> */}
+        {/* number of results  */}
+        <div>
+          <p className="text-sm text-gray-700">{searchResults.length}
+          {searchResults.length === 1? " result ": " results "}
+          found for {`"${searchString}"`}</p>
+        </div>
+        <div className="text-[18px] font-[500]">
+          Products {`(${searchResults.length})`}
+        </div>
+      </div>
+      {/* search product card  */}
+      <div className=" py-6 flex-wrap">
+        {searchResults.map((items,index)=> (
+          <SearchCard
+            key={index}
+            img={items.img_url}
+            title={items.title}
+            head={items.head}
+            price={items.price}
+          />
         ))}
       </div>
     </div>
