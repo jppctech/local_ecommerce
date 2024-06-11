@@ -9,20 +9,8 @@ const ProductSchema = new mongoose.Schema({
         type: String,
         required: [true, "Please provide a product image"],
     },
-    img_url1: {
-        type: String,
-    },
-    img_ur2: {
-        type: String,
-    },
-    img_url3: {
-        type: String,
-    },
-    img_url4: {
-        type: String,
-    },
-    img_url5: {
-        type: String,
+    sub_img: {
+        type: Array
     },
     price: {
         type: Number,

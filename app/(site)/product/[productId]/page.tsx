@@ -16,6 +16,7 @@ import Image from "next/image"
 interface ProductDetailProps{
     title: string,
     img_url: string,
+    sub_img: string[],
     subtitle: string,
     price: number,
     reviews: number,
@@ -65,9 +66,18 @@ const ProductPage = () => {
         reqData()
     }, [id])
 
-    
-    
-    
+    const subImages: string[] = productDetail?.sub_img ?? [];
+
+    const mainImage = productDetail?.img_url ?? '';
+
+    const [bigImg,setBigImg] = useState('');
+
+    useEffect(()=> {
+        setBigImg(mainImage)
+    }, [mainImage])
+
+
+
     const Allergens = [
         {
             label: "milk-free",
@@ -136,28 +146,39 @@ const ProductPage = () => {
                                 alt="product image"
                                 width={1000}
                                 height={1000}
-                                src={productDetail?.img_url}
+                                src={bigImg}
                                 className="w-[85%] object-cover rounded-full"
                             />
                         </div>
                         <div className="flex gap-3">
                             <div className="h-28 w-28 border border-gray-300 rounded-xl items-center justify-center flex">
-                                <Image
-                                alt="product image"
-                                width={1000}
-                                height={1000}
-                                src={productDetail?.img_url}
-                                className="rounded-full w-24"
-                                />
+                                <button onClick={()=> setBigImg(mainImage)}>
+                                    <Image
+                                        alt="product image"
+                                        width={1000}
+                                        height={1000}
+                                        src={productDetail?.img_url}
+                                        className="rounded-full w-24"
+                                    />
+                                </button>
                             </div>
-                            <div className="h-28 w-28 border border-gray-300 rounded-xl items-center justify-center flex">
-                                <Image
-                                alt="product image"
-                                width={1000}
-                                height={1000}
-                                src={productDetail?.img_url}
-                                className="rounded-full w-24"
-                                />
+                            <div>
+                                <div className="h-28 w-28 border border-gray-300 rounded-xl items-center justify-center flex">
+                                    {
+                                        subImages.map((items, index)=> (
+                                            <button onClick={()=>setBigImg(items)}>
+                                                <Image
+                                                    key={index}
+                                                    alt="product image"
+                                                    width={1000}
+                                                    height={1000}
+                                                    src={items}
+                                                    className="rounded-full w-24"
+                                                />
+                                            </button>
+                                        ))
+                                    }
+                                </div>
                             </div>
                         </div>
                     </div>
