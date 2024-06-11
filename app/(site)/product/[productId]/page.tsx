@@ -133,6 +133,12 @@ const ProductPage = () => {
         },
     ]
 
+        if(!productDetail){
+            return(
+                <div className=" h-screen w-screen"></div>
+            )
+        }
+
     return ( 
         <div className="md:px-[4%] h-full lg:px-[14%] mb-20 px-4 border-t border-t-gray-200 flex flex-col w-full pb-20">
             <div className="py-4">
