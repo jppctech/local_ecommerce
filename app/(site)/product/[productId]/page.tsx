@@ -166,9 +166,8 @@ const ProductPage = () => {
                                 <div className="h-28 w-28 border border-gray-300 rounded-xl items-center justify-center flex">
                                     {
                                         subImages.map((items, index)=> (
-                                            <button onClick={()=>setBigImg(items)}>
+                                            <button onClick={()=>setBigImg(items)} key={index}>
                                                 <Image
-                                                    key={index}
                                                     alt="product image"
                                                     width={1000}
                                                     height={1000}
