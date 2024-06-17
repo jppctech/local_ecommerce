@@ -71,6 +71,7 @@ function SearchPage() {
       <div className=" py-6 flex-wrap">
         {searchResults.map((items,index)=> (
           <SearchCard
+            id={items._id}
             key={index}
             img={items.img_url}
             title={items.title}
