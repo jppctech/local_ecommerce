@@ -1,6 +1,6 @@
+import { USERconnect } from "@/dbconnect/dbconnect";
 import Mailer from "@/helper/mailer";
 import User from "@/models/userModels";
-import { USERconnect } from "@/userdbConnect/USERConnect";
 import { NextRequest, NextResponse } from "next/server";
 
 USERconnect();

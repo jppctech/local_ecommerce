@@ -1,5 +1,5 @@
 import User from "@/models/userModels";
-import { USERconnect } from "@/userdbConnect/USERConnect";
+import { USERconnect } from "@/dbconnect/dbconnect";
 import { NextRequest, NextResponse } from "next/server";
 
 USERconnect();
