@@ -1,10 +1,10 @@
-import { USERconnect } from "@/dbconnect/dbconnect";
+import { connect } from "@/dbconnect/dbconnect";
 import Mailer from "@/helper/mailer";
 import User from "@/models/userModels";
 import { NextRequest, NextResponse } from "next/server";
 import bcryptjs from "bcryptjs"
 
-USERconnect();
+connect();
 
 export async function POST(request: NextRequest) {
     try {
