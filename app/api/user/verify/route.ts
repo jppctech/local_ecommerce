@@ -10,13 +10,35 @@ export async function POST(request: NextRequest){
 
         const {verifyId} = await reqBody;
 
-        await User.findOneAndUpdate({verifyToken: verifyId},{
-            isVerfied: true,
-            verifyToken: undefined,
-            verifyTokenExpiry: undefined,
+        const user = await User.findOneAndUpdate({verifyToken: verifyId,
+            verifyTokenExpiry: {$gt: Date.now()}
+        },{
+            $set: {
+                isVerified: true 
+            },
+            $unset: {
+                verifyToken: "",
+                verifyTokenExpiry: ""
+            }
+        },
+        { 
+            new: true 
         })
 
+
+        if(!user){
+            await User.findOneAndDelete({verifyToken: verifyId});
+            
+            return NextResponse.json({
+                data: 'expired',
+                success: false,
+                message: "Verify token has expired!"
+            })
+        }
+
         return NextResponse.json({
+            user,
+            data: 'true',
             success: true,
             message: "user has been verified successfully."
         })

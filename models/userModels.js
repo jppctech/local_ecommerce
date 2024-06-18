@@ -20,7 +20,7 @@ const userSchema = new mongoose.Schema({
     cart_items: {
         type: Array,
     },
-    isVerfied: {
+    isVerified: {
         type: Boolean,
         default: false,
     },

@@ -2,6 +2,7 @@ import { USERconnect } from "@/dbconnect/dbconnect";
 import Mailer from "@/helper/mailer";
 import User from "@/models/userModels";
 import { NextRequest, NextResponse } from "next/server";
+import bcryptjs from "bcryptjs"
 
 USERconnect();
 
@@ -23,11 +24,14 @@ export async function POST(request: NextRequest) {
             })
         }
 
+        const salt = await bcryptjs.genSalt(10)
+        const hashedPassword = await bcryptjs.hash(password, salt)
+
         const newUser = await new User({
             first_name,
             last_name,
             email,
-            password
+            password: hashedPassword
         });
 
         await newUser.save();
