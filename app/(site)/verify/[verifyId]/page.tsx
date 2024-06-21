@@ -17,7 +17,7 @@ const VerifyPage = () => {
     const handleVerify = async () => {
         try {
             const res = await axios.post('/api/user/verify', { token });
-             setResponseData(res.data.data;)
+             setResponseData(res.data.data)
             if (responseData === "true") {
                 setVerified(true);
                 setSuccess(true);
