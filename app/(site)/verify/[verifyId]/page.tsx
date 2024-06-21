@@ -7,17 +7,16 @@ import { useState } from "react";
 
 const VerifyPage = () => {
 
-    const { token } = useParams();
+    const token = useParams();
 
     const [verified, setVerified] = useState(false);
     const [success, setSuccess] = useState(false);
     const [expire, setExpire] = useState(false);
-    const [responseData,setResponseData] = useState()
 
     const handleVerify = async () => {
         try {
-            const res = await axios.post('/api/user/verify', { token });
-             setResponseData(res.data.data)
+            const res = await axios.post('/api/user/verify', token);
+            const responseData = res.data.data;
             if (responseData === "true") {
                 setVerified(true);
                 setSuccess(true);
