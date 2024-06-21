@@ -16,7 +16,7 @@ export async function POST(request: NextRequest) {
             password
         } = reqBody;
 
-        const user = await User.findOne({email})
+        const user = await User.findOne({email: email})
 
         if(user){
             return NextResponse.json({
@@ -41,7 +41,8 @@ export async function POST(request: NextRequest) {
 
         return NextResponse.json({
             success: true,
-            newUser
+            newUser,
+            data: 'true'
         })
 
     } catch (error) {

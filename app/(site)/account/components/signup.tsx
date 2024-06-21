@@ -21,7 +21,7 @@ const SignUpPage = () => {
         const data = res.data.data;
         if(data === 'exists'){
             toast.error("User already exists!")
-        }else{
+        }if(data === 'true'){
             toast.success("Please verify your email")
             setTimeout(() => {
                 router.push('account')
