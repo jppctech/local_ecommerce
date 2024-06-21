@@ -12,11 +12,12 @@ const VerifyPage = () => {
     const [verified, setVerified] = useState(false);
     const [success, setSuccess] = useState(false);
     const [expire, setExpire] = useState(false);
+    const [responseData,setResponseData] = useState()
 
     const handleVerify = async () => {
         try {
             const res = await axios.post('/api/user/verify', { token });
-            const responseData = res.data.data;
+             setResponseData(res.data.data;)
             if (responseData === "true") {
                 setVerified(true);
                 setSuccess(true);
