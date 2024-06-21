@@ -19,9 +19,10 @@ const SignUpPage = () => {
     const handleSubmit = async() =>{
         const res = await axios.post('/api/user/signup', user);
         const data = res.data.data;
-        if(data === 'exists'){
+        if(data === "exists"){
             toast.error("User already exists!")
-        }if(data === 'true'){
+        }
+        if(data === 'true'){
             toast.success("Please verify your email")
             setTimeout(() => {
                 router.push('account')
@@ -35,7 +36,7 @@ const SignUpPage = () => {
                 Create an account
             </div>
             <div className="flex flex-col">
-                <form className="flex flex-col gap-3">
+                <div className="flex flex-col gap-3">
                     <div className=" flex flex-col gap-2">
                         <p>
                             First Name
@@ -71,7 +72,7 @@ const SignUpPage = () => {
                     <Button className="w-full h-12 rounded-full text-lg mt-3" onClick={handleSubmit}>
                         Create
                     </Button>
-                </form>
+                </div>
             </div>
         </div>
      );

@@ -14,14 +14,14 @@ export async function POST(request: NextRequest) {
             last_name,
             email,
             password
-        } = reqBody;
+        } = await reqBody;
 
-        const user = await User.findOne({email: email})
+        const user = await User.findOne({email})
 
         if(user){
             return NextResponse.json({
                 message: "user already exists",
-                data: 'exists'
+                data: "exists"
             })
         }
 
