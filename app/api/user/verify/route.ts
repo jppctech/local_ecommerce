@@ -8,9 +8,10 @@ export async function POST(request: NextRequest){
     try {
         const reqBody = await request.json();
 
-        const {verifyId} = await reqBody;
+        const {verifyId} = reqBody;
 
-        const user = await User.findOneAndUpdate({verifyToken: verifyId,
+        const user = await User.findOneAndUpdate({
+            verifyToken: verifyId,
             verifyTokenExpiry: {$gt: Date.now()}
         },{
             $set: {
