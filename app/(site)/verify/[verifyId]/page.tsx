@@ -7,44 +7,47 @@ import { useState } from "react";
 
 const VerifyPage = () => {
 
-    const Token = useParams();
+    const { token } = useParams();
 
-    const [verified,setVerified] = useState(false);
-    const [success,setSuccess] = useState(false);
-    const [data,setData] = useState("")
-    const [expire,setExpire] = useState(false);
+    const [verified, setVerified] = useState(false);
+    const [success, setSuccess] = useState(false);
+    const [expire, setExpire] = useState(false);
 
-    const handleVerify = async()=> {
-        const res = await axios.post('/api/user/verify', Token)
-        setData(res.data.data)
-        if(data === "true"){
-            setVerified(true)
-            setSuccess(true)
+    const handleVerify = async () => {
+        try {
+            const res = await axios.post('/api/user/verify', { token });
+            const responseData = res.data.data;
+            if (responseData === "true") {
+                setVerified(true);
+                setSuccess(true);
+            } else if (responseData === 'expired') {
+                setExpire(true);
+            }
+        } catch (error) {
+            console.error("Error verifying token:", error);
         }
-        if(data === 'expired'){
-            setExpire(true);
-        }
-    }
+    };
+
     return ( 
-        <div className=" w-full h-full flex justify-center items-center p-20 flex-col gap-8">
+        <div className="w-full h-full flex justify-center items-center p-20 flex-col gap-8">
             <Button onClick={handleVerify} disabled={success}>
                 Verify here 
             </Button>
             {
                 verified && 
                     <div>
-                        email has been verified !
+                        Email has been verified!
                     </div>
                 
             }
             {
                 expire && 
                 <div>
-                    Your token has been expired, Please re-try signing up
+                    Your token has expired, please re-try signing up.
                 </div>
             }
         </div>
      );
 }
- 
+
 export default VerifyPage;

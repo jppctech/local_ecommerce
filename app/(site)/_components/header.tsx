@@ -2,16 +2,26 @@
 
 import { Search, ShoppingCart, User } from "lucide-react";
 import { NavigationMenuDemo } from "./headerdropdown";
-import { useState, ChangeEvent } from "react";
+import { useState, ChangeEvent, useEffect } from "react";
 import React, { KeyboardEvent } from 'react';
 import { useRouter } from "next/navigation";
 import Image from "next/image";
 import Link from "next/link";
+import axios from "axios";
 
 const Header: React.FC = () => {
     const [search, setSearch] = useState<string>('');
+    const [user,setUser] = useState();
 
     const router = useRouter()
+
+    useEffect(()=> {
+        const handleUser = async () => {
+            const req = await axios.post('/api/user/myprofile');
+            setUser(req.data.data)
+        }
+        handleUser();
+    }, [])
 
     const handleInputChange = (event: ChangeEvent<HTMLInputElement>) => {
         event.preventDefault
@@ -25,7 +35,11 @@ const Header: React.FC = () => {
     }
 
     const handleAccount = ()=>{
-        router.push(`/account`)
+        if(!user){
+            router.push(`/account`)
+        }else{
+            router.push('/myprofile')
+        }
     }
 
     return (
