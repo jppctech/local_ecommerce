@@ -16,11 +16,11 @@ const VerifyPage = () => {
     const handleVerify = async () => {
         try {
             const res = await axios.post('/api/user/verify', { token });
-            const responseData = res.data.data;
+            const responseData = await res.data.data;
             if (responseData === "true") {
                 setVerified(true);
                 setSuccess(true);
-            } else if (responseData === 'expired') {
+            } if (responseData === 'expired') {
                 setExpire(true);
             }
         } catch (error) {
