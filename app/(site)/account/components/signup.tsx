@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button";
 import axios from "axios";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
+import toast, { Toaster } from "react-hot-toast";
 
 const SignUpPage = () => {
     const [user,setUser] = useState({
@@ -16,11 +17,20 @@ const SignUpPage = () => {
     const router = useRouter()
 
     const handleSubmit = async() =>{
-        await axios.post('/api/user/signup', user);
-        router.push('account')
+        const res = await axios.post('/api/user/signup', user);
+        const data = res.data.data;
+        if(data === 'exists'){
+            toast.error("User already exists!")
+        }else{
+            toast.success("Please verify your email")
+            setTimeout(() => {
+                router.push('account')
+            }, 3000);
+        }
     }
     return ( 
         <div className="w-[24rem] flex flex-col gap-12 mt-6 mb-3">
+            <Toaster/>
             <div className=" text-[44px] font-[500]">
                 Create an account
             </div>

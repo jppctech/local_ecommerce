@@ -20,7 +20,8 @@ export async function POST(request: NextRequest) {
 
         if(user){
             return NextResponse.json({
-                error: "user already exists"
+                message: "user already exists",
+                data: 'exists'
             })
         }
 

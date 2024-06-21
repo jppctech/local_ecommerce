@@ -2,26 +2,29 @@
 
 import { Button } from "@/components/ui/button";
 import axios from "axios";
-import { useParams } from "next/navigation";
+import { useParams, useRouter } from "next/navigation";
 import { useState } from "react";
+import toast, { Toaster } from "react-hot-toast";
 
 const VerifyPage = () => {
 
     const token = useParams();
 
-    const [verified, setVerified] = useState(false);
     const [success, setSuccess] = useState(false);
-    const [expire, setExpire] = useState(false);
+    const router = useRouter()
 
     const handleVerify = async () => {
         try {
             const res = await axios.post('/api/user/verify', token);
             const responseData = res.data.data;
             if (responseData === "true") {
-                setVerified(true);
+                toast.success("Email has been verified successfully")
                 setSuccess(true);
+                setTimeout(() => {
+                    router.push('/account')
+                }, 3000);
             } if (responseData === "expired") {
-                setExpire(true);
+                toast.error("Your Token has been expired! try signing up again.")
             }
         } catch (error) {
             console.error("Error verifying token:", error);
@@ -30,22 +33,10 @@ const VerifyPage = () => {
 
     return ( 
         <div className="w-full h-full flex justify-center items-center p-20 flex-col gap-8">
+            <Toaster/>
             <Button onClick={handleVerify} disabled={success}>
                 Verify here 
             </Button>
-            {
-                verified && 
-                    <div>
-                        Email has been verified!
-                    </div>
-                
-            }
-            {
-                expire && 
-                <div>
-                    Your token has expired, please re-try signing up.
-                </div>
-            }
         </div>
      );
 }
