@@ -27,7 +27,7 @@ const MyProfile = () => {
     }, [])
 
     const handleLogout = async()=> {
-        await axios.post('/api/user/logout');
+        await axios.get('/api/user/logout');
         toast.success("Logout succussfully")
         setTimeout(()=>{
             router.push('/')
