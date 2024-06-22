@@ -48,7 +48,7 @@ const MyProfile = () => {
                     Order History 
                 </p>
                 <p>
-                    You haven't placed any orders yet.
+                    You have not placed any orders yet.
                 </p>
             </div>
         </div>
