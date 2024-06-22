@@ -22,7 +22,7 @@ const VerifyPage = () => {
                 setSuccess(true);
                 setTimeout(() => {
                     router.push('/account')
-                }, 3000);
+                }, 2000);
             } if (responseData === "expired") {
                 toast.error("Your Token has been expired! try signing up again.")
             }

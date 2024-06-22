@@ -26,7 +26,7 @@ const SignUpPage = () => {
             toast.success("Please verify your email")
             setTimeout(() => {
                 router.push('account')
-            }, 3000);
+            }, 2000);
         }
     }
     return ( 

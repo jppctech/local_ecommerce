@@ -28,7 +28,7 @@ const LoginPage = () => {
             toast.success("Login Successfully")
             setTimeout(()=>{
                 router.push('/');
-            }, 3000);
+            }, 2000);
         }
     }
     return ( 
