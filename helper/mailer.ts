@@ -50,7 +50,7 @@ export default async function Mailer({email,emailType,first_name}: MailerProps) 
             from : "officialknowabouttech@gmail.com",
             to : email,
             subject : emailType === "verify"? "verify your email address": "Reset Password",
-            html: `<p>Hello ${first_name}, </br>Click<a href="${process.env.DOMAIN_NAME}/verify/${hashedToken}"> here </a>to verify your mail for Local ecommerce store <br/> Thank you for choosing us.</p>`
+            html: `<p>Hello ${first_name}, </br>Click<a href="${process.env.DOMAIN_LOCAL}/verify/${hashedToken}"> here </a>to verify your mail for Local ecommerce store <br/> Thank you for choosing us.</p>`
         };
 
         const mailResponse = await transport.sendMail(mailOptions)
