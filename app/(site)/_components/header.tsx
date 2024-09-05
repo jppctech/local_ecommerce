@@ -30,14 +30,6 @@ const Header: React.FC = () => {
         handleCartCount();
     }, [])
 
-    useEffect(()=> {
-        const handleCartCount = async () => {
-            const req = await axios.post('/api/user/cartcount')
-            setCartCount(req.data.data)
-        }
-        handleCartCount();
-    }, [])
-
     const handleInputChange = (event: ChangeEvent<HTMLInputElement>) => {
         event.preventDefault
         setSearch(event.target.value);
