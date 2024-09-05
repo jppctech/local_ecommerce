@@ -12,6 +12,7 @@ import axios from "axios";
 const Header: React.FC = () => {
     const [search, setSearch] = useState<string>('');
     const [user,setUser] = useState();
+    const [cartCount, setCartCount] = useState(0)
 
     const router = useRouter()
 
@@ -20,7 +21,21 @@ const Header: React.FC = () => {
             const req = await axios.post('/api/user/myprofile');
             setUser(req.data.data)
         }
+
+        const handleCartCount = async () => {
+            const req = await axios.post('/api/user/cartcount')
+            setCartCount(req.data.data)
+        }
         handleUser();
+        handleCartCount();
+    }, [])
+
+    useEffect(()=> {
+        const handleCartCount = async () => {
+            const req = await axios.post('/api/user/cartcount')
+            setCartCount(req.data.data)
+        }
+        handleCartCount();
     }, [])
 
     const handleInputChange = (event: ChangeEvent<HTMLInputElement>) => {
@@ -73,7 +88,7 @@ const Header: React.FC = () => {
                     <button className="hidden md:flex gap-2 border border-gray-600 rounded-full h-12 w-36 items-center justify-center bg-black text-white">
                         <ShoppingCart />
                         <p>$0.00</p>
-                        <p>(0)</p>
+                        <p>({cartCount})</p>
                     </button>
                 </div>
             </div>

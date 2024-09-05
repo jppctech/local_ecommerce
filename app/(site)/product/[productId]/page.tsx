@@ -2,7 +2,7 @@
 
 import axios from "axios"
 import { useEffect, useState } from "react"
-import { useParams } from 'next/navigation'
+import { useParams, useRouter } from 'next/navigation'
 import Rating from "../../_components/rating_star"
 import "../../../globals.css"
 import { Separator } from "@/components/ui/separator"
@@ -11,6 +11,7 @@ import { Button } from "@/components/ui/button"
 import GoesWellWith from "../components/GoesWellWith"
 import OurServices from "../components/ourServices"
 import Image from "next/image"
+import toast, { Toaster } from 'react-hot-toast'
 
 
 interface ProductDetailProps{
@@ -46,7 +47,9 @@ const ProductPage = () => {
         }
     }
 
-    const id = useParams()    
+    const id = useParams()
+    
+    const router = useRouter();
     
     
     const Review = (`(${productDetail?.reviews})`)
@@ -62,7 +65,6 @@ const ProductPage = () => {
                 console.log(error)
             }
         }
-        
         reqData()
     }, [id])
 
@@ -72,10 +74,44 @@ const ProductPage = () => {
 
     const [bigImg,setBigImg] = useState('');
 
+    const [user,setUser] = useState();
+
+    const { productId: itemId} = id
+
+
+    
     useEffect(()=> {
         setBigImg(mainImage)
     }, [mainImage])
+    
+    useEffect(()=> {
+        const handleUser = async () => {
+            const req = await axios.post('/api/user/myprofile');
+            setUser(req.data.data)
+        } 
+        handleUser();
+    },[])
+    
 
+    const addToCart = async () => {
+        if(!user){
+            router.push("/account")
+        }
+        const productWithQuantity = {
+            itemId: itemId,
+            itemQuantity: quantity
+        };
+            
+        try {
+            await axios.post('/api/user/addtocart', {productWithQuantity, user}); 
+
+            toast('Item added to your cart', {
+                icon: '👏',
+              });
+        } catch (error) {
+            console.error("Error adding to cart:", error);
+        }
+    }
 
 
     const Allergens = [
@@ -141,6 +177,10 @@ const ProductPage = () => {
 
     return ( 
         <div className="md:px-[4%] h-full lg:px-[14%] mb-20 px-4 border-t border-t-gray-200 flex flex-col w-full pb-20">
+            <Toaster
+                position="top-center"
+                reverseOrder={false}
+            />
             <div className="py-4">
                 <p className="text-sm text-gray-600">Home / All products / {productDetail?.title}</p>
             </div>
@@ -226,11 +266,11 @@ const ProductPage = () => {
                                 <Plus size={20}/>
                             </Button>
                             </div>
-                        <Button className="lg:w-56 p-8 rounded-full text-xl">
+                        <Button className="lg:w-56 p-8 rounded-full text-xl" onClick={addToCart}>
                             Add to cart
                         </Button>
                         </div>
-                        <Button variant={"outline"} className="hidden lg:flex w-48 p-8 rounded-full md:ml-6 text-lg border-black hover:bg-black hover:text-white">
+                        <Button variant={"outline"} className="hidden lg:flex w-48 p-8 rounded-full md:ml-6 text-lg border-black hover:bg-black hover:text-white" >
                             Buy it now
                         </Button>
                     </div>

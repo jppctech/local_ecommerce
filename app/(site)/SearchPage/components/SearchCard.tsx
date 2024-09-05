@@ -24,7 +24,7 @@ const SearchCard = ({
         router.push(`/product/${id}`)
     }
     return ( 
-        <div className=" flex-col relative w-72 border border-gray-300 items-center justify-center flex rounded-xl pb-8">
+        <div className=" flex-col relative w-72 border border-gray-300 items-center justify-center flex rounded-xl pb-8 cursor-pointer" onClick={handleRedirect}>
             <div className="w-72 h-72 items-center justify-center flex">
                 <Image
                     src={img}
@@ -34,9 +34,13 @@ const SearchCard = ({
                     className=" hover:w-64 transition-all rounded-full"
                 />
             </div>
-            <div className=" absolute top-2 right-2">
-                {head}
-            </div>
+            <div className={
+                        head==="NEW"? "absolute top-0 right-0  bg-green-700 w-12 items-center flex justify-center rounded-md text-white text-[13px] h-6 mt-4 mr-4"
+                    : head==="PREORDER NOW"? "absolute top-0 right-0  bg-[#A36754] w-28 items-center flex justify-center rounded-md text-white text-[12px] h-6 mt-4 mr-4"
+                    : head===""?"":"absolute top-0 right-0  bg-red-600 w-12 items-center flex justify-center rounded-md text-white text-[14px] h-6 mt-4 mr-4"
+                }>
+                    {head}
+                </div>
             <div className="w-full px-4 flex flex-col gap-2">
                 <p>
                     ${price}

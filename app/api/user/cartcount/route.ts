@@ -7,24 +7,27 @@ connect();
 
 export async function POST(request:NextRequest) {
     try {
-        try {
-            const userId = getDataFromToken(request);
-            const user = await User.findById(userId);
-            
+        const userId = getDataFromToken(request);
+
+        const user = await User.findById(userId);
+
+        if (!user){
             return NextResponse.json({
-                data: user,
-            })
-        } catch (error) {
-            return NextResponse.json({
-                success: false,
-                message: 'user not found'
+                data: "noUser"
             })
         }
+
+        const cartItemCount = user.cart_items.reduce((total: number, item: any) => total + item.itemQuantity, 0);
+
+        return NextResponse.json({
+            data: cartItemCount
+        })
+
     } catch (error) {
         return NextResponse.json({
-            error: [error, "something went wrong will getting data from database"]
+            error: error
         },{
-            status: 502
+            status: 500
         })
     }
 }
